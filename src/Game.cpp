@@ -29,6 +29,7 @@ void Game::initVariables()
     */
 
     this->isRunning = true;
+    this->point.respawn(this->snake.getBody());
 }
 
 void Game::events()
@@ -61,6 +62,11 @@ void Game::update()
     */
     this->events();
     this->snake.update();
+    // Sprawdzamy w 1/1, czy głowa uderzyła w punkt
+    if (this->snake.getHeadBounds().intersects(this->point.getBounds())) {
+        this->snake.grow(); // Wąż dostaje informację, że ma urosnąć
+        this->point.respawn(this->snake.getBody()); // Bezpiecznie losujemy nowy punkt!
+    }
 }
 
 void Game::render()
@@ -71,6 +77,7 @@ void Game::render()
     this->window.clear(sf::Color::Black);
 
     this->snake.render(this->window);
+    this->point.draw(this->window);
 
     this->window.display();
 }

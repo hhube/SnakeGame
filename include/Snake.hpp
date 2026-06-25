@@ -33,6 +33,8 @@ public:
     void handleInput();
     bool isAlive() const;
     sf::FloatRect getHeadBounds() const;
+    std::deque<sf::RectangleShape>& getBody();
+
 
 
 };

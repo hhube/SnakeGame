@@ -5,7 +5,7 @@ Snake::Snake()
     /*
         Snake born 
     */
-    this->gridSize = 30.0f;
+    this->gridSize = 20.0f;
     this->currentDirection = Direction::NONE;//Move is off
     this->alive = true;
     this->pendingGrow = false;
@@ -128,4 +128,8 @@ bool Snake::isAlive() const
 sf::FloatRect Snake::getHeadBounds() const
 {
     return this->snakeBody.front().getGlobalBounds();
+}
+
+std::deque<sf::RectangleShape>& Snake::getBody() {
+    return this->snakeBody;
 }

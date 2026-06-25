@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Snake.hpp"
+#include "Points.hpp"
 //Main game class
 class Game
 {
@@ -9,10 +10,9 @@ private:
     sf::RenderWindow window;
     sf::VideoMode video;
     sf::Event event;
-    sf::RectangleShape shape; //Shape for snake 
-    sf::CircleShape circle;   //Shape for points
 
     Snake snake;
+    Points point;
 
     bool isRunning; //For game loop
 
